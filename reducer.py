@@ -9,13 +9,14 @@ def main(argv):
         wiki_title_data = line.split(" ")
         if len(wiki_title_data) == 3:
             title = wiki_title_data[0]
-            count = int(wiki_title_data[1])
+            count = wiki_title_data[1]
             date_accessed = wiki_title_data[2]
+            trimmed_date = date_accessed.replace("\n", "")
             if title not in wiki_count:
-                wiki_count[title+"}"+date_accessed] = count
-    
+                title_with_accessed_date = title+ "}" + trimmed_date
+                wiki_count[title_with_accessed_date] = count
     for key, value in wiki_count.items():
-        print(key + "\t" + str(value) + "\n")
+        print(key+"\t"+str(value))
 
 if __name__=="__main__":
     main(sys.argv)

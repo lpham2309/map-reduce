@@ -15,8 +15,10 @@ CREATE EXTERNAL TABLE popularity_ranking (
     col5 string
 )
 STORED BY 'org.apache.hadoop.hive.dynamodb.DynamoDBStorageHandler' 
-TBLPROPERTIES ("dynamodb.table.name" = "popularity_ranking", 
-"dynamodb.column.mapping" = "col1:page_title,col2:date_accessed,col3:views_by_date,col4:total_views,col5:popularity_trend");
+TBLPROPERTIES (
+    "dynamodb.table.name" = "popularity_ranking",
+    "dynamodb.region" = "us-west-2",
+    "dynamodb.column.mapping" = "col1:page_title,col2:date_accessed,col3:views_by_date,col4:total_views,col5:popularity_trend");
 
 INSERT OVERWRITE TABLE popularity_ranking SELECT * FROM s3_popularity_ranking;
 

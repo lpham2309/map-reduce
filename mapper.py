@@ -26,7 +26,6 @@ def main(argv):
                     article_info[str(curr_title)] = int(row[2])
 
     for key, value in article_info.items():
-        if value > 10:
-            print(key + " " + str(value) + " " + file_date)
+        print(key + " " + str(value) + " " + file_date)
 if __name__=="__main__":
     main(sys.argv)
